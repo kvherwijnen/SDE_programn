@@ -94,6 +94,40 @@ public class DesignPatterns {
         }
     }
 
+    // Using the decorater pattern to allow
+    interface UserDecorator extends User {
+        void setUser(User user);
+        void addPermission(String permission);
+        boolean hasPermission(String permission);
+    }
+
+    static class UserDecoratorImpl implements UserDecorator {
+        private User user;
+        private Set<String> permissions = new HashSet<>();
+
+        public void setUser(User user) {
+            this.user = user;
+        }
+
+        public void addPermission(String permission) {
+            this.permissions.add(permission);
+        }
+
+        public boolean hasPermission(String permission) {
+            return this.permissions.contains(permission);
+        }
+
+        @Override
+        public String getName() {
+            return user.getName();
+        }
+
+        @Override
+        public String getRole() {
+            return user.getRole();
+        }
+    }
+
     // Using the Command pattern to handle user input
     interface Command {
         void execute();
@@ -117,7 +151,11 @@ public class DesignPatterns {
 
         public void execute() {
             User user = UserFactory.createUser(name, role);
-            System.out.println("User created: " + user.getName() + " (" + user.getRole() + ")");
+            UserDecorator userDecorator = new UserDecoratorImpl();
+            userDecorator.setUser(user);
+            userDecorator.addPermission("create");
+            userDecorator.addPermission("read");
+            System.out.println("User created: " + user.getName() + " (" + user.getRole() + ") with permissions: "+userDecorator.permissions);
         }
     }
 }
