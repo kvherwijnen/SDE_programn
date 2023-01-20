@@ -13,6 +13,8 @@ jobs:
       with:
         java-version: 14
         distribution: adopt
+    - name: Lint code
+      run: gradle lint
     - name: Build and test
       run: gradle build test
 
