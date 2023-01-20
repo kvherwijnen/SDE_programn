@@ -1,13 +1,12 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.junit.Test;
 
-public class DesignPatternsTest {
+import static org.junit.Assert.assertTrue;
 
-    @Test
+public class Test {
+
+    @org.junit.Test
     public void testCreateUserCommand() {
         // set up input for the test
         String input = "create\nJohn Doe\nadmin\nexit\n";
