@@ -1,0 +1,20 @@
+name: Java Unit Test Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up JDK - AdoptOpenJDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: 14
+        distribution: adopt
+    - name: Install Gradle
+      run: sudo apt-get install gradle -y
+    - name: Build and test
+      run: gradle build test
+  
