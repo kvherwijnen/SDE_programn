@@ -13,6 +13,5 @@ jobs:
       with:
         java-version: 14
         distribution: adopt
-    - name: Build with Ant
-      run: ant -noinput -buildfile build.xml
+
 
