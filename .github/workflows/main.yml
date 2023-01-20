@@ -11,7 +11,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: 14
+        java-version: 19
         distribution: hotspot
     - name: Build and test
       run: |
