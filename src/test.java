@@ -4,7 +4,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertTrue;
 
-public class Test {
+public class test {
 
     @org.junit.Test
     public void testCreateUserCommand() {
