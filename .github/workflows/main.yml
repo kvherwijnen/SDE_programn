@@ -13,3 +13,8 @@ jobs:
       with:
         java-version: 14
         distribution: adopt
+    - name: Install Gradle
+      run: sudo apt-get install gradle -y
+    - name: Build and test
+      run: gradle build test
+  
