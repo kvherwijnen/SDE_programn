@@ -8,10 +8,25 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Set up JDK
+    - name: Set up JDK - AdoptOpenJDK
       uses: actions/setup-java@v2
       with:
-        java-version: 19
+        java-version: 14
+        distribution: adopt
+    - name: Set up JDK - Amazon Corretto
+      uses: actions/setup-java@v2
+      with:
+        java-version: 14
+        distribution: amazon
+    - name: Set up JDK - GraalVM
+      uses: actions/setup-java@v2
+      with:
+        java-version: 14
+        distribution: graalvm
+    - name: Set up JDK - OpenJDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: 14
         distribution: hotspot
     - name: Build and test
       run: |
