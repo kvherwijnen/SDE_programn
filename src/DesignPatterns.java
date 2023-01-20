@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class DesignPatterns {
     public static void main(String[] args) {
@@ -103,7 +105,7 @@ public class DesignPatterns {
 
     static class UserDecoratorImpl implements UserDecorator {
         private User user;
-        private Set<String> permissions = new HashSet<>();
+        private final Set<String> permissions = new HashSet<>();
 
         public void setUser(User user) {
             this.user = user;
@@ -151,11 +153,11 @@ public class DesignPatterns {
 
         public void execute() {
             User user = UserFactory.createUser(name, role);
-            UserDecorator userDecorator = new UserDecoratorImpl();
+            UserDecoratorImpl userDecorator = new UserDecoratorImpl();
             userDecorator.setUser(user);
             userDecorator.addPermission("create");
             userDecorator.addPermission("read");
-            System.out.println("User created: " + user.getName() + " (" + user.getRole() + ") with permissions: "+userDecorator.permissions);
+            System.out.println("User created: " + user.getName() + " (" + user.getRole() + ") with permissions: "+ userDecorator.permissions);
         }
     }
 }
