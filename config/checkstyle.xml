@@ -32,5 +32,8 @@
         <module name="RedundantImport">
             <property name="severity" value="warning"/>
         </module>
+        <module name="CustomRule">
+            <property name="threshold" value="10"/>
+        </module>
     </module>
 </module>

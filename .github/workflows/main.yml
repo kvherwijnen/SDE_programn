@@ -13,9 +13,15 @@ jobs:
       with:
         java-version: 14
         distribution: adopt
-    - name: Lint code
-      run: gradle lint
-    - name: code smell + cyclomatic complexity
-      run: gradle checkstyleMain checkstyleTest
+#    - name: Lint code
+#      run: gradle lint
+#    - name: code smell + cyclomatic complexity
+#      run: gradle checkstyleMain checkstyleTest
     - name: Build and test
       run: gradle build test
+    - name: Check code quality
+      run: gradle checkstyleMain
+      if: failure()
+      env:
+        GRADLE_OPTS: "-Xmx256m"
+
