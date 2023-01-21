@@ -42,7 +42,7 @@ task lint(type: Checkstyle) {
     classpath = sourceSets.main.compileClasspath
 }
 
-tasks.register('pmd') {
+task pmd(type: net.sourceforge.pmd.gradle.PmdTask) {
     ruleSetFiles = files("config/pmd-ruleset.xml")
     source = fileTree("src/main")
     reports {
