@@ -7,6 +7,7 @@
 
 plugins {
     id 'java'
+    id 'checkstyle'
 }
 
 sourceSets {
@@ -24,13 +25,15 @@ sourceSets {
 
 dependencies {
     testImplementation 'junit:junit:4.13'
+    checkstyle "com.puppycrawl.tools:checkstyle:8.32"
 }
-
-// Lint
-
-apply plugin: 'checkstyle'
 
 checkstyle {
     toolVersion = "8.32"
     configFile = rootProject.file("config/checkstyle.xml")
+}
+
+task lint(type: Checkstyle) {
+    source = sourceSets.main.allJava
+    classpath = sourceSets.main.compileClasspath
 }
