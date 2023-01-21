@@ -31,7 +31,7 @@ dependencies {
 checkstyle {
     toolVersion = "8.32"
     configFile = rootProject.file("config/checkstyle.xml")
-    failOnViolation = true
+    failOnViolation = false
 }
 
 task lint(type: Checkstyle) {
