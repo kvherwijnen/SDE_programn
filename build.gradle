@@ -25,3 +25,12 @@ sourceSets {
 dependencies {
     testImplementation 'junit:junit:4.13'
 }
+
+// Lint
+
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = "8.32"
+    configFile = rootProject.file("config/checkstyle.xml")
+}
