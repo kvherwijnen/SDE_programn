@@ -15,7 +15,7 @@ jobs:
         distribution: adopt
     - name: Lint code
       run: gradle lint
-    - name: Checkstyle
+    - name: code smell + cyclomatic complexity
       run: gradle checkstyleMain checkstyleTest
     - name: Build and test
       run: gradle build test
