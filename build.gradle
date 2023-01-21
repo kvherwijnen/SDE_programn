@@ -31,11 +31,12 @@ dependencies {
 checkstyle {
     toolVersion = "8.32"
     configFile = rootProject.file("config/checkstyle.xml")
-    failOnViolation = false
+    failOnViolation = true
 }
 
 task lint(type: Checkstyle) {
     source = sourceSets.main.allJava
     classpath = sourceSets.main.compileClasspath
+    failOnViolation = true
 }
 
