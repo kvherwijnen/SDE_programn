@@ -10,6 +10,7 @@ public class test {
     public void testCreateUserCommand() {
 
         String input = "create\nJohn Doe\nadmin\nexit\n";
+
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -19,7 +20,7 @@ public class test {
         DesignPatterns.main(new String[]{});
 
         String output = out.toString();
-        assertTrue(output.contains("Enter command (create, exit): User created: John Doe (Admin)"));
+	assertTrue(output.contains("Enter command (create, exit): User created: John Doe(Admin)"));
         assertTrue(output.contains("Enter command (create, exit): Exiting program..."));
     }
 }

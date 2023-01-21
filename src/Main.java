@@ -5,6 +5,5 @@ public class Main {
         // call the main method of the DesignPatterns class
         DesignPatterns example = new DesignPatterns();
         DesignPatterns.main(args);
-
     }
 }
