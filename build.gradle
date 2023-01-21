@@ -33,17 +33,8 @@ checkstyle {
     configFile = rootProject.file("config/checkstyle.xml")
 }
 
-task lint(type: lint) {
+task lint(type: Checkstyle) {
     source = sourceSets.main.allJava
     classpath = sourceSets.main.compileClasspath
 }
 
-task checkstyleMain(type: Checkstyle) {
-    source = sourceSets.main.allJava
-    classpath = sourceSets.main.compileClasspath
-}
-
-task checkstyleTest(type: Checkstyle) {
-    source = sourceSets.test.allJava
-    classpath = sourceSets.test.compileClasspath
-}
