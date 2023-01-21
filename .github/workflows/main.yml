@@ -15,5 +15,7 @@ jobs:
         distribution: adopt
     - name: Lint code
       run: gradle lint
+    - name: Check for code smells using PMD
+      run: gradle pmd
     - name: Build and test
       run: gradle build test
