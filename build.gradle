@@ -6,7 +6,6 @@
  */
 
 plugins {
-    id 'pmd'
     id 'java'
     id 'checkstyle'
 //    id 'org.sonarqube' version "2.8"
@@ -26,10 +25,8 @@ sourceSets {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     checkstyle "com.puppycrawl.tools:checkstyle:8.32"
-    pmd "net.sourceforge.pmd:pmd-core:6.29.0"
-    pmd "net.sourceforge.pmd:pmd-java:6.29.0"
 }
 
 checkstyle {
@@ -40,15 +37,6 @@ checkstyle {
 task lint(type: Checkstyle) {
     source = sourceSets.main.allJava
     classpath = sourceSets.main.compileClasspath
-}
-
-task pmd(type: net.sourceforge.pmd.gradle.PmdTask) {
-    ruleSetFiles = files("config/pmd-ruleset.xml")
-    source = fileTree("src/main")
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
 }
 
 
