@@ -1,0 +1,3 @@
+> Task :lint NO-SOURCE
+
+BUILD SUCCESSFUL in 440ms

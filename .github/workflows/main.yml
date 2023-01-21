@@ -17,5 +17,7 @@ jobs:
       run: gradle lint
     - name: Build and test
       run: gradle build test
+    - name: Code smells and cyclomatic complexity
+      run: ./gradlew sonarqube
 
 
