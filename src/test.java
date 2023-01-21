@@ -9,7 +9,7 @@ public class test {
     @org.junit.Test
     public void testCreateUserCommand() {
         // set up input for the test
-        String input = "create\nJohn Doe\nadmin\nexit\n";
+        String input = "create\nkevin Doe\nadmin\nexit\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -22,7 +22,8 @@ public class test {
 
         // check if the output is as expected
         String output = out.toString();
-        assertTrue(output.contains("Enter command (create, exit): User created: John Doe (Admin)"));
         assertTrue(output.contains("Enter command (create, exit): Exiting program..."));
+        assertTrue(output.contains("Enter command (create, exit): User created: Kevin Doe (Admin)"));
+
     }
 }
