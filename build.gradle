@@ -43,7 +43,7 @@ task lint(type: Checkstyle) {
 }
 
 tasks.register('pmd') {
-    ruleSetFiles = files("pmd-ruleset.xml")
+    ruleSetFiles = files("config/pmd-ruleset.xml")
     source = fileTree("src/main")
     reports {
         xml.enabled = true
