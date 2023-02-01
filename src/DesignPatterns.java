@@ -51,12 +51,13 @@ public class DesignPatterns {
         }
     }
 
+    // Structural Design Pattern: Adapter Pattern
     interface User {
         String getName();
         String getRole();
     }
 
-    static class Admin implements User {
+    class Admin implements User {
         private final String name;
 
         public Admin(String name) {
@@ -72,11 +73,13 @@ public class DesignPatterns {
         }
     }
 
-    static class RegularUser implements User {
+    class LegacyUser {
         private final String name;
+        private final String role;
 
-        public RegularUser(String name) {
+        public LegacyUser(String name, String role) {
             this.name = name;
+            this.role = role;
         }
 
         public String getName() {
@@ -84,17 +87,108 @@ public class DesignPatterns {
         }
 
         public String getRole() {
-            return "Regular User";
+            return role;
         }
     }
 
-    static class UserFactory {
-        public static User createUser(String name, String role) {
-            if (role.equalsIgnoreCase("admin")) {
-                return new Admin(name);
-            } else {
-                return new RegularUser(name);
+    class LegacyUserAdapter implements User {
+        private final LegacyUser legacyUser;
+
+        public LegacyUserAdapter(LegacyUser legacyUser) {
+            this.legacyUser = legacyUser;
+        }
+
+        @Override
+        public String getName() {
+            return legacyUser.getName();
+        }
+
+        @Override
+        public String getRole() {
+            return legacyUser.getRole();
+        }
+    }
+
+    // Creational Design Pattern: Abstract Factory Pattern
+    interface UserAbstractFactory {
+        User createUser();
+        UserDecorator createUserDecorator();
+    }
+
+    class AdminUserAbstractFactory implements UserAbstractFactory {
+        @Override
+        public User createUser() {
+            return new Admin(name);
+        }
+
+        @Override
+        public UserDecorator createUserDecorator() {
+            return new UserDecoratorImpl();
+        }
+    }
+
+    class RegularUserAbstractFactory implements UserAbstractFactory {
+        @Override
+        public User createUser() {
+            return new RegularUser(name);
+        }
+
+        @Override
+        public UserDecorator createUserDecorator() {
+            return new UserDecoratorImpl();
+        }
+    }
+
+    // Behavioral Design Pattern: Observer Pattern
+    interface Observer {
+        void update();
+    }
+
+    interface Subject {
+        void registerObserver(Observer observer);
+        void removeObserver(Observer observer);
+        void notifyObservers();
+    }
+
+    class UserSubject implements Subject {
+        private final Set<Observer> observers = new HashSet<>();
+        private User user;
+
+        public void registerObserver(Observer observer) {
+            this.observers.add(observer);
+        }
+
+        public void removeObserver(Observer observer) {
+            this.observers.remove(observer);
+        }
+
+        public void notifyObservers() {
+            for (Observer observer : observers) {
+                observer.update();
             }
+        }
+
+        public User getUser() {
+            return user;
+        }
+
+        public void setUser(User user) {
+            this.user = user;
+            notifyObservers();
+        }
+    }
+
+    class UserObserver implements Observer {
+        private UserSubject subject;
+
+        public UserObserver(UserSubject subject) {
+            this.subject = subject;
+            subject.registerObserver(this);
+        }
+
+        @Override
+        public void update() {
+            System.out.println("User changed: " + subject.getUser().getName());
         }
     }
 
