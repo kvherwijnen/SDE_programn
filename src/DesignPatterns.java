@@ -32,7 +32,7 @@ public class DesignPatterns {
 
     // Using the Singleton pattern for the console input scanner
     static class InputScanner {
-        private static final InputScanner instance = new InputScanner();
+        private static InputScanner instance;
         private final Scanner scanner;
 
         private InputScanner() {
@@ -40,6 +40,9 @@ public class DesignPatterns {
         }
 
         public static InputScanner getInstance() {
+            if (instance == null) {
+                instance = new InputScanner();
+            }
             return instance;
         }
 
@@ -48,7 +51,6 @@ public class DesignPatterns {
         }
     }
 
-    // Using the Factory pattern to create user objects
     interface User {
         String getName();
         String getRole();
