@@ -14,19 +14,19 @@ The Command pattern is used to handle user input, where the program prompts the 
 The main method uses a while loop to repeatedly prompt for input and execute commands until the user chooses to `exit`. 
 
 # Resit SDE Program
+The code is a Java program that implements several design patterns. The main part of the code implements a simple command line interface that accepts two commands: "create" and "exit". The "create" command creates a new user by asking the user for a name and a role ("admin" or "regular"). The program uses several design patterns to manage the creation of the user:
 
-I implemented the following design patterns:
-
-**Singleton pattern:** The InputScanner class uses the singleton pattern to ensure that only one instance of the Scanner class is created. The getInstance() method returns the single instance of the InputScanner class, creating one if it doesn't already exist. This is useful to ensure that multiple instances of the Scanner class do not interfere with each other.
-
-**Decorator pattern:**
-The UserDecoratorImpl class implements the UserDecorator interface and adds additional functionality to the User objects. It adds the ability to manage user permissions. The setUser() method sets the User object that the UserDecoratorImpl class will decorate, and the addPermission() and hasPermission() methods allow for adding and checking user permissions.
-
-**Command pattern:**
-The Command interface and its implementations (ExitCommand and CreateUserCommand) handle user input. The execute() method of each implementation defines the behavior of the Command object when it is executed. This is useful for encapsulating the behavior of an action, allowing it to be easily reused and passed around as an object.
+**Singleton pattern:** Used for the console input scanner, to ensure that there is only one instance of the input scanner.
+**Adapter pattern:** Used to adapt the data of a legacy user to the current user interface.
+**Abstract Factory** pattern: Used to create different types of users based on their role.
+**Observer pattern:** Used to notify other parts of the program when a user is created.
+**Decorator pattern:** Used to add additional behavior to the user.
+**Command pattern:** Used to handle user input, where the program prompts the user for a command.
 
 ## Feedback Andries Nieuwenhuize ##
 The singleton design pattern is not well implemented since it does not avoid for multiple instances.
+The UserFactory is not a design pattern but an example of a simple factory (@see https://refactoring.guru/design-patterns/factory-comparison).
+
 
 **Singleton old**
 
@@ -70,5 +70,3 @@ The singleton design pattern is not well implemented since it does not avoid for
 
 The updated code ensures that there is only one instance of the InputScanner class by using a static instance variable and a private constructor. The instance is created only if it is null, and the only way to get an instance is through the getInstance method, which returns the singleton instance.
 
-## Feedback Andries Nieuwenhuize ##
-The UserFactory is not a design pattern but an example of a simple factory (@see https://refactoring.guru/design-patterns/factory-comparison).
