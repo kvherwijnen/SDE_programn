@@ -1,5 +1,5 @@
 # SDE_programn OLD
-Java console based program
+Java console based program (https://github.com/luth0rs/SDE_programn)
 
 This code uses several design patterns in a program that takes user input and creates a user object based on that input. 
 
